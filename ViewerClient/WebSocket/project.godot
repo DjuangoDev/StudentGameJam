@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="WebSocket"
+run/main_scene="res://vrTest.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,3 +19,7 @@ config/icon="res://icon.svg"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[xr]
+
+shaders/enabled=true

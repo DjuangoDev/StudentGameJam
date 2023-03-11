@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbu4l4lnkbaju"]
+
+[ext_resource type="Script" path="res://vrTest.gd" id="1_4o8ei"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dnrmx"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4qhv"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ex7j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_54bvk"]
+
+[node name="vrTest" type="Node3D"]
+script = ExtResource("1_4o8ei")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+mesh = SubResource("BoxMesh_dnrmx")
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+mesh = SubResource("BoxMesh_g4qhv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Enter VR"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.7, 0, 0, 0, 4.7, 0, 0, 0, 4.7, 0, -1, 0)
+mesh = SubResource("PlaneMesh_4ex7j")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.7, 0, 0, 0, -2.05444e-07, -4.7, 0, 4.7, -2.05444e-07, 0, -1, -6.59373)
+mesh = SubResource("PlaneMesh_4ex7j")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.627801, 0, 0.26288, 0, 0.300433, 0, -0.272728, 0, 0.605131, 0.736361, -0.49673, -1.05531)
+mesh = SubResource("BoxMesh_54bvk")
+skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2, 0)
+shadow_enabled = true
