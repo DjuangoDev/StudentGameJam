@@ -1,12 +1,14 @@
 extends Node3D
  
-var webxr_interface
+var webxr_interface: XRInterface
  
 func _ready() -> void:
 	$CanvasLayer.visible = false
 	$CanvasLayer/Button.pressed.connect(self._on_button_pressed)
  
-	webxr_interface = XRServer.find_interface("WebXR")
+	#webxr_interface = XRServer.find_interface("WebXR")
+	#webxr_interface = XRServer.find_interface("OpenXR")
+	webxr_interface = XRServer.find_interface("Native mobile")
 	if webxr_interface:
 		# WebXR uses a lot of asynchronous callbacks, so we connect to various
 		# signals in order to receive them.
